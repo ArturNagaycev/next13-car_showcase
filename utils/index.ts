@@ -1,6 +1,7 @@
 // INITIAL VARIANT FROM RAPIDAPI
 
-import { CarProps } from "@/types";
+import { manufacturers } from "@/constants";
+import { CarProps, FilterProps } from "@/types";
 
 // const url = "https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla";
 // const options = {
@@ -19,14 +20,15 @@ import { CarProps } from "@/types";
 //   console.error(error);
 // }
 
-export async function fetchCars() {
+export async function fetchCars(filters: FilterProps) {
+  const { manufacturer, year, model, fuel, limit } = filters;
   const headers = {
     "X-RapidAPI-Key": "2411584935msh711aab73515e517p1f9d71jsn6c24c9390160",
     "X-RapidAPI-Host": "cars-by-api-ninjas.p.rapidapi.com",
   };
 
   const response = await fetch(
-    "https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla",
+    `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`,
     {
       headers: headers,
     }
