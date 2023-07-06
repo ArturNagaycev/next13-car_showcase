@@ -37,6 +37,7 @@ const CustomFilter = ({ title, options }: CustomFilterProps) => {
               alt="chevron up down"
             />
           </Listbox.Button>
+          
           <Transition
             as={Fragment}
             leave="transition ease-in duration-100"
